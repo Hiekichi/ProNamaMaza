@@ -32,12 +32,23 @@ public class Map {
                 area[x][y] = WALL;
             }
         }
-        // 柱から上下左右どこか１方向に壁を作ります
+        // 1番上の柱から上下左右どちらか1方向に「新規で」壁を作ります
+        final int[] dx = { 0, -1, 1, 0 };
+        final int[] dy = { 1, 0, 0, -1 };
         for (int x = 2; x < area.length - 2; x += 2) {
-            for (int y = 2; y < area[0].length - 2; y += 2) {
-                final int[] dx = { 0, -1, 1, 0 };
-                final int[] dy = { 1, 0, 0, -1 };
-                int r = (int)(Math.random() * 4);
+            int r = (int)(Math.random() * 4);
+            while (area[x + dx[r]][2 + dy[r]] == WALL) {
+                r = (int)(Math.random() * 4);
+            }
+            area[x + dx[r]][2 + dy[r]] = WALL;
+        }
+        // 2番目以降の柱から下左右のどちらか1方向に「新規で」壁を作ります
+        for (int y = 4; y < area[0].length - 2; y += 2) {
+            for (int x = 2; x < area.length - 2; x += 2) {
+                int r = (int)(Math.random() * 3);
+                while (area[x + dx[r]][y + dy[r]] == WALL) {
+                    r = (int)(Math.random() * 4);
+                }
                 area[x + dx[r]][y + dy[r]] = WALL;
             }
         }
