@@ -44,7 +44,7 @@ public class Controller implements Initializable {
         pnX = 1;
         pnY = 1;
         // マップを準備する
-        imageMap = new Image((Paths.get("map.png").toUri().toString()));
+        imageMap = new Image((Paths.get("res/map.png").toUri().toString()));
         mapSizeX = 15;
         mapSizeY = 15;
         area = new int[mapSizeX][mapSizeY];
@@ -55,7 +55,7 @@ public class Controller implements Initializable {
         drawAroundMap(13, 13);
 
         // プロ生ちゃんの画像を準備する
-        image = new Image(Paths.get("98.png").toUri().toString());
+        image = new Image(Paths.get("res/98.png").toUri().toString());
         pixelX = 16 + pnX * 32;
         pixelY = 16 + pnY * 32;
         gc.drawImage(image, 0, dir * 32, 32, 32, pixelX, pixelY, 32, 32);
