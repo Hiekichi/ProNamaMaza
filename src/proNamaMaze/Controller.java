@@ -8,11 +8,15 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
+import java.awt.*;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static com.apple.eio.FileManager.getResource;
 
 public class Controller implements Initializable {
     @FXML
@@ -42,19 +46,18 @@ public class Controller implements Initializable {
         pnX = 1;
         pnY = 1;
         // マップを準備する
-        imageMap = new Image((Paths.get("map.png").toUri().toString()));
+        imageMap = new Image((Paths.get("src/map.png").toUri().toString()));
         mapSizeX = 15;
         mapSizeY = 15;
         area = new int[mapSizeX][mapSizeY];
         Map.create(area);
-        //drawAllMap();
         gc.setFill(Color.BLACK);
         gc.fillRect(16, 16, 32 * mapSizeX, 32 * mapSizeY);
         drawAroundMap(pnX, pnY);
         drawAroundMap(13, 13);
 
         // プロ生ちゃんの画像を準備する
-        image = new Image(Paths.get("98.png").toUri().toString());
+        image = new Image(Paths.get("src/98.png").toUri().toString());
         pixelX = 16 + pnX * 32;
         pixelY = 16 + pnY * 32;
         gc.drawImage(image, 0, dir * 32, 32, 32, pixelX, pixelY, 32, 32);
