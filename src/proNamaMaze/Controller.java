@@ -40,22 +40,26 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         gc = canvas.getGraphicsContext2D();
-        // プロ生ちゃんの位置を初期化する
-        pnX = 1;
-        pnY = 1;
         // マップを準備する
         imageMap = new Image((Paths.get("res/map.png").toUri().toString()));
-        mapSizeX = 15;
-        mapSizeY = 15;
+        initMap(15, 15);
+
+        // プロ生ちゃんの画像を準備する
+        image = new Image(Paths.get("res/98.png").toUri().toString());
+        initMyChar();
+    }
+
+    void initMap(int mapSizeX, int mapSizeY) {
+        pnX = 1;        // プロ生ちゃんの位置を初期化する
+        pnY = 1;
         area = new int[mapSizeX][mapSizeY];
         Map.create(area);
         gc.setFill(Color.BLACK);
         gc.fillRect(16, 16, 32 * mapSizeX, 32 * mapSizeY);
         drawAroundMap(pnX, pnY);
         drawAroundMap(13, 13);
-
-        // プロ生ちゃんの画像を準備する
-        image = new Image(Paths.get("res/98.png").toUri().toString());
+    }
+    void initMyChar() {
         pixelX = 16 + pnX * 32;
         pixelY = 16 + pnY * 32;
         gc.drawImage(image, 0, dir * 32, 32, 32, pixelX, pixelY, 32, 32);
@@ -66,6 +70,10 @@ public class Controller implements Initializable {
         System.out.print("keyPressed. "
                 + event.getCode().toString()
                 + " (" + pnX + "," + pnY + ")" );
+        if (event.getCode().toString().contentEquals("SPACE")) {
+            initMap(15, 15);
+            initMyChar();
+        }
         boolean walkFlg = false;
         if (timer == null) {
             for( int i = 0; i < 4; ++i ) {
