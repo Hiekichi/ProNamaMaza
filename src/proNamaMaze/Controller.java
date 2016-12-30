@@ -41,11 +41,14 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         gc = canvas.getGraphicsContext2D();
         // マップを準備する
-        imageMap = new Image((Paths.get("res/map.png").toUri().toString()));
+        //imageMap = new Image((Paths.get("res/map.png").toUri().toString()));
+        imageMap = new Image(getClass().getResourceAsStream("map.png")); // jarで画像を使う書き方
+        //System.out.println(getClass().getResource("map.png").toString());
         initMap(15, 15);
 
         // プロ生ちゃんの画像を準備する
-        image = new Image(Paths.get("res/98.png").toUri().toString());
+        //image = new Image(Paths.get("res/98.png").toUri().toString());
+        image = new Image(getClass().getResourceAsStream("98.png")); // jarで画像を使う書き方
         initMyChar();
     }
 
@@ -59,6 +62,7 @@ public class Controller implements Initializable {
         drawAroundMap(pnX, pnY);
         drawAroundMap(13, 13);
     }
+
     void initMyChar() {
         pixelX = 16 + pnX * 32;
         pixelY = 16 + pnY * 32;
