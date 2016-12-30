@@ -9,7 +9,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
-import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -129,7 +128,6 @@ public class Controller implements Initializable {
         for (int x = 0; x < area.length; ++x) {
             for (int y = 0; y < area[0].length; ++y) {
                 gc.drawImage(imageMap, area[x][y] * 32, 0, 32, 32, x * 32 + 16, y * 32 + 16, 32, 32);
-//                gc.drawImage(image, 0, dir * 32, 32, 32, pixelX, pixelY, 32, 32);
             }
         }
     }

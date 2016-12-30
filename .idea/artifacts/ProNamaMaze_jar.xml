@@ -3,8 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/ProNamaMaze_jar</output-path>
     <root id="archive" name="ProNamaMaze.jar">
       <element id="module-output" name="ProNamaMaze" />
-      <element id="file-copy" path="$PROJECT_DIR$/res/98.png" />
-      <element id="file-copy" path="$PROJECT_DIR$/res/map.png" />
     </root>
   </artifact>
 </component>
